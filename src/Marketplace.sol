@@ -165,32 +165,4 @@ contract NFTMarketplace {
 
         return results;
     }
-
-    function getUserListings(
-        address user
-    ) external view returns (Listing[] memory) {
-        uint256 activeCount = 0;
-
-        for (uint256 i = 0; i < listingCounter; i++) {
-            if (listings[i].seller == user && listings[i].active) {
-                activeCount++;
-            }
-        }
-
-        Listing[] memory results = new Listing[](activeCount);
-        uint256 resultCount = 0;
-
-        for (
-            uint256 i = 0;
-            i <= listingCounter && resultCount < activeCount;
-            i++
-        ) {
-            if (listings[i].seller == user && listings[i].active) {
-                results[resultCount] = listings[i];
-                resultCount++;
-            }
-        }
-
-        return results;
-    }
 }
